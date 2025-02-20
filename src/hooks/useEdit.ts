@@ -8,7 +8,6 @@ export default function useEdit() {
 
   const editService = async (id: string) => {
     try {
-      toast.success("تم التحديث بنجاح");
       setSuccess(false);
       await fetch("https://api.example.com/orders", {
         method: "POST",
@@ -22,6 +21,7 @@ export default function useEdit() {
     } catch (error) {
       setSuccess(false);
       console.error(error);
+      toast.error("حدث خطأ ما. اعد تحميل الصفحة وحاول مرة اخرى");
     } finally {
       setLoading(false);
     }
