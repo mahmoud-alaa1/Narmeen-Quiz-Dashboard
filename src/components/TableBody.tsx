@@ -27,7 +27,7 @@ interface TableBodyProps {
 export default function TableBody({ field, newDirection }: TableBodyProps) {
   const [showModal, setShowModal] = useState<boolean | string>(false);
   const { dispatch, orders } = useOrders();
-  const { deleteService, loading } = useDelete();
+  const { deleteService } = useDelete();
   useEffect(() => {
     const newOrders = [...orders].sort((a, b) => {
       const valueA =
@@ -46,7 +46,7 @@ export default function TableBody({ field, newDirection }: TableBodyProps) {
     dispatch({ type: "setOrders", payload: newOrders });
   }, [field, newDirection, dispatch]);
 
-  const handleDelete = (id: string) => {
+  const handleDelete = async (id: string) => {
     deleteService(id);
 
     dispatch({ type: "deleteOrder", payload: id });

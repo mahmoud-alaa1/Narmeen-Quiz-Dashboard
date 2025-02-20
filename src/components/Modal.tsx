@@ -1,7 +1,7 @@
 import { X } from "lucide-react";
 import { useOrders } from "../context/OrdersProvider";
 import { edits } from "../data/sampleData";
-
+import useEdit from "../hooks/useEdit";
 
 const statusColor = (status: string) => {
   switch (status) {
@@ -22,6 +22,8 @@ export default function Modal({
   showModal: boolean | string;
 }) {
   const { currentOrder, dispatch } = useOrders();
+  const { editService, success } = useEdit();
+
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4">
       <div className="bg-white rounded-lg shadow-xl max-w-md w-full">
@@ -58,6 +60,7 @@ export default function Modal({
               <button
                 onClick={() => {
                   setShowModal(false);
+                  editService(currentOrder!.id);
                   dispatch({
                     type: "updateOrder",
                     payload: { ...currentOrder!, status },

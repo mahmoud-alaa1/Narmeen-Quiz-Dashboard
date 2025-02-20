@@ -1,25 +1,30 @@
 import { useState } from "react";
+import toast from "react-hot-toast";
 
-export default function useDelete() {
+export default function useEdit() {
   const [error] = useState<boolean | string>(false);
   const [loading, setLoading] = useState<boolean | string>(false);
-  
-  const deleteService = async (id: string) => {
+  const [success, setSuccess] = useState<boolean | string>(false);
+
+  const editService = async (id: string) => {
     try {
-      setLoading(id);
+      toast.success("تم التحديث بنجاح");
+      setSuccess(false);
       await fetch("https://api.example.com/orders", {
-        method: "DELETE",
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ id }),
       });
+      setSuccess(true);
     } catch (error) {
+      setSuccess(false);
       console.error(error);
     } finally {
       setLoading(false);
     }
   };
 
-  return { error, loading, deleteService };
+  return { error, success, loading, editService };
 }
