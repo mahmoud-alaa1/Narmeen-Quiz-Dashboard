@@ -60,7 +60,7 @@ export default function Modal({
               <button
                 onClick={() => {
                   setShowModal(false);
-                  editService(currentOrder!.id);
+                  editService(currentOrder!.id, status);
                   dispatch({
                     type: "updateOrder",
                     payload: { ...currentOrder!, status },

@@ -6,15 +6,13 @@ export default function useEdit() {
   const [loading, setLoading] = useState<boolean | string>(false);
   const [success, setSuccess] = useState<boolean | string>(false);
 
-  const editService = async (id: string) => {
+  const editService = async (id: string, status: string) => {
     try {
       setSuccess(false);
-      await fetch("https://api.example.com/orders", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ id }),
+      await fetch(`${`${import.meta.env.VITE_API_URL}/orders/${id}/status`}`, {
+        method: "PATCH",
+
+        body: JSON.stringify({ status }),
       });
       toast.success("تم التحديث بنجاح");
       setSuccess(true);

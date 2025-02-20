@@ -24,7 +24,6 @@ function App() {
   };
 
   return (
-
     <div className="min-h-screen bg-gray-50 p-8">
       <div className="max-w-7xl mx-auto">
         <h1 className="text-3xl font-bold text-gray-900 mb-8">
@@ -115,6 +114,19 @@ function App() {
                       <ArrowUpDown size={16} />
                     </button>
                   </th>
+                  {/* <th
+                    scope="col"
+                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                  >
+                    <button
+                      onClick={() => handleSort("date")}
+                      className="flex items-center space-x-1 hover:text-gray-700"
+                    >
+                      <Tag size={16} />
+                      <span>تاريخ الطلب</span>
+                      <ArrowUpDown size={16} />
+                    </button>
+                  </th> */}
                   <th
                     scope="col"
                     className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"

@@ -1,5 +1,10 @@
 import { PenSquare, Trash2 } from "lucide-react";
-import { Order, TSortDirection, TSortField } from "../types/types";
+import {
+  Order,
+  OrderResponse,
+  TSortDirection,
+  TSortField,
+} from "../types/types";
 import { useEffect, useState } from "react";
 import Modal from "./Modal";
 import { useOrders } from "../context/OrdersProvider";
@@ -67,6 +72,22 @@ export default function TableBody({ field, newDirection }: TableBodyProps) {
         const response = await fetch(`${import.meta.env.VITE_API_URL}/orders`);
         const data = await response.json();
         console.log(data);
+        const orders = data.data.map((order: OrderResponse) => {
+          const newOrder: Order = {
+            id: order.id.toString(),
+            status: order.status,
+            packageId: order.packageId.toString(),
+            client: {
+              name: order.name,
+              phone: order.phone,
+              address: order.address,
+              email: order.email,
+              notes: order.note,
+            },
+          };
+          return newOrder;
+        });
+        dispatch({ type: "setOrders", payload: orders });
       } catch (error) {
         console.error(error);
       }
