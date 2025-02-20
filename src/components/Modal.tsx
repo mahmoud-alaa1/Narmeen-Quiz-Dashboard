@@ -9,7 +9,7 @@ const statusColor = (status: string) => {
       return "bg-blue-100 text-blue-800";
     case "pending":
       return "bg-yellow-100 text-yellow-800";
-    case "fulfilled":
+    case "compeleted":
       return "bg-green-100 text-green-800";
   }
 };
@@ -56,7 +56,7 @@ export default function Modal({
           </div>
 
           <div className="space-y-3">
-            {(["pending", "shipped", "fulfilled"] as const).map((status) => (
+            {(["pending", "shipped", "compeleted"] as const).map((status) => (
               <button
                 onClick={() => {
                   setShowModal(false);

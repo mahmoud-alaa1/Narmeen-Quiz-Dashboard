@@ -8,7 +8,7 @@ export interface Order {
     notes: string;
   };
   packageId: string;
-  status: "pending" | "shipped" | "fulfilled";
+  status: "pending" | "shipped" | "compeleted";
 }
 export type TSortField = keyof Order["client"] | "packageId" | "status";
 export type TSortDirection = "asc" | "desc";

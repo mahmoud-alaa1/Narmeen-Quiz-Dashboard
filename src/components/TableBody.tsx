@@ -12,7 +12,7 @@ const getStatusColor = (status: Order["status"]) => {
       return "bg-yellow-100 text-yellow-800";
     case "shipped":
       return "bg-blue-100 text-blue-800";
-    case "fulfilled":
+    case "compeleted":
       return "bg-green-100 text-green-800";
     default:
       return "bg-gray-100 text-gray-800";
@@ -28,6 +28,7 @@ export default function TableBody({ field, newDirection }: TableBodyProps) {
   const [showModal, setShowModal] = useState<boolean | string>(false);
   const { dispatch, orders } = useOrders();
   const { deleteService } = useDelete();
+
   useEffect(() => {
     const newOrders = [...orders].sort((a, b) => {
       const valueA =
@@ -59,6 +60,19 @@ export default function TableBody({ field, newDirection }: TableBodyProps) {
       payload: orders.find((o) => o.id === id)!,
     });
   };
+
+  useEffect(() => {
+    const fetchOrders = async () => {
+      try {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/orders`);
+        const data = await response.json();
+        console.log(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchOrders();
+  }, [dispatch]);
 
   return (
     <tbody className="bg-white divide-y divide-gray-200 ">

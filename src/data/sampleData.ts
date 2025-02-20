@@ -2,7 +2,7 @@ import { Order } from "../types/types";
 export const edits = {
   shipped: "تم الشحن",
   pending: "قيد الانتظار",
-  fulfilled: "اكتمل",
+  compeleted: "اكتمل",
 };
 
 export const initialOrders: Order[] = [
@@ -40,6 +40,6 @@ export const initialOrders: Order[] = [
       notes: "I like it",
     },
     packageId: "PKG002",
-    status: "fulfilled",
+    status: "compeleted",
   },
 ];
