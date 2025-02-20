@@ -11,7 +11,7 @@ export default function useDelete() {
       await fetch(`${import.meta.env.VITE_API_URL}/orders/${id}`, {
         method: "DELETE",
       });
-      toast.error("تم الحذف بنجاح");
+      toast.success("تم الحذف بنجاح");
     } catch (error) {
       console.error(error);
     } finally {
