@@ -1,7 +1,7 @@
 import { X } from "lucide-react";
 import { useOrders } from "../context/OrdersProvider";
+import { edits } from "../data/sampleData";
 
-const edits = ["تم الشحن", "قيد الانتظار", "اكتمل"];
 
 const statusColor = (status: string) => {
   switch (status) {
@@ -68,7 +68,7 @@ export default function Modal({
                   status
                 )} `}
               >
-                {status.charAt(0).toUpperCase() + status.slice(1)}
+                {edits[status]}
               </button>
             ))}
           </div>

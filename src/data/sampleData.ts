@@ -1,4 +1,9 @@
 import { Order } from "../types/types";
+export const edits = {
+  shipped: "تم الشحن",
+  pending: "قيد الانتظار",
+  fulfilled: "اكتمل",
+};
 
 export const initialOrders: Order[] = [
   {

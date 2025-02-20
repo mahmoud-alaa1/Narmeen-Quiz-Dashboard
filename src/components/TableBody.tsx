@@ -3,6 +3,8 @@ import { Order, TSortDirection, TSortField } from "../types/types";
 import { useEffect, useState } from "react";
 import Modal from "./Modal";
 import { useOrders } from "../context/OrdersProvider";
+import { edits } from "../data/sampleData";
+import useDelete from "../hooks/useDelete";
 
 const getStatusColor = (status: Order["status"]) => {
   switch (status) {
@@ -25,6 +27,7 @@ interface TableBodyProps {
 export default function TableBody({ field, newDirection }: TableBodyProps) {
   const [showModal, setShowModal] = useState<boolean | string>(false);
   const { dispatch, orders } = useOrders();
+  const { deleteService, loading } = useDelete();
   useEffect(() => {
     const newOrders = [...orders].sort((a, b) => {
       const valueA =
@@ -44,6 +47,8 @@ export default function TableBody({ field, newDirection }: TableBodyProps) {
   }, [field, newDirection, dispatch]);
 
   const handleDelete = (id: string) => {
+    deleteService(id);
+
     dispatch({ type: "deleteOrder", payload: id });
   };
 
@@ -82,15 +87,15 @@ export default function TableBody({ field, newDirection }: TableBodyProps) {
           </td>
           <td className="px-6 py-4 whitespace-nowrap">
             <span
-              className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${getStatusColor(
+              className={`px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full ${getStatusColor(
                 order.status
               )}`}
             >
-              {order.status}
+              {edits[order.status]}
             </span>
           </td>
           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-            <div className="flex  gap-2  ">
+            <div className="flex gap-2  ">
               <button
                 onClick={() => handleEdit(order.id)}
                 className="block relative text-blue-600 hover:text-blue-900"
