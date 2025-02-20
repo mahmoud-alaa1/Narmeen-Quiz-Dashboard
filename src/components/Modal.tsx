@@ -57,7 +57,7 @@ export default function Modal({
             {(["pending", "shipped", "fulfilled"] as const).map((status) => (
               <button
                 onClick={() => {
-                  
+                  setShowModal(false);
                   dispatch({
                     type: "updateOrder",
                     payload: { ...currentOrder!, status },
