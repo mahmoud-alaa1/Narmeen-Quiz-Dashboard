@@ -17,6 +17,7 @@ export default function useEdit() {
         },
         body: JSON.stringify({ id }),
       });
+      toast.success("تم التحديث بنجاح");
       setSuccess(true);
     } catch (error) {
       setSuccess(false);
