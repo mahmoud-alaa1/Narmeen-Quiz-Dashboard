@@ -10,6 +10,7 @@ import Modal from "./Modal";
 import { useOrders } from "../context/OrdersProvider";
 import { edits } from "../data/sampleData";
 import useDelete from "../hooks/useDelete";
+import { convertDate } from "../lib/utils";
 
 const getStatusColor = (status: Order["status"]) => {
   switch (status) {
@@ -37,11 +38,11 @@ export default function TableBody({ field, newDirection }: TableBodyProps) {
   useEffect(() => {
     const newOrders = [...orders].sort((a, b) => {
       const valueA =
-        field === "packageId" || field === "status"
+        field === "packageId" || field === "status" || field === "created_at"
           ? a[field]
           : a.client[field];
       const valueB =
-        field === "packageId" || field === "status"
+        field === "packageId" || field === "status" || field === "created_at"
           ? b[field]
           : b.client[field];
 
@@ -84,6 +85,7 @@ export default function TableBody({ field, newDirection }: TableBodyProps) {
               email: order.email,
               notes: order.note,
             },
+            created_at: convertDate(order.created_at),
             quantity: order.quantity,
           };
           return newOrder;
@@ -132,6 +134,9 @@ export default function TableBody({ field, newDirection }: TableBodyProps) {
             >
               {edits[order.status]}
             </span>
+          </td>
+          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+            {order.created_at}
           </td>
           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
             <div className="flex gap-2  ">

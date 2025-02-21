@@ -16,7 +16,7 @@ function App() {
   const [sortField, setSortField] = useState<TSortField>("name");
   const [sortDirection, setSortDirection] = useState<TSortDirection>("asc");
 
-  const handleSort = (field: typeof sortField) => {
+  const handleSort = (field: TSortField) => {
     const newDirection =
       field === sortField && sortDirection === "asc" ? "desc" : "asc";
     setSortDirection(newDirection);
@@ -103,16 +103,10 @@ function App() {
                   </th>
                   <th
                     scope="col"
-                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    className="px-6 flex items-center py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                   >
-                    <button
-                      onClick={() => handleSort("packageId")}
-                      className="flex items-center space-x-1 hover:text-gray-700"
-                    >
-                      <Package size={16} />
-                      <span>الكمية</span>
-                      <ArrowUpDown size={16} />
-                    </button>
+                    <Package size={16} />
+                    <span>الكمية</span>
                   </th>
                   <th
                     scope="col"
@@ -127,19 +121,19 @@ function App() {
                       <ArrowUpDown size={16} />
                     </button>
                   </th>
-                  {/* <th
+                  <th
                     scope="col"
                     className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                   >
                     <button
-                      onClick={() => handleSort("date")}
+                      onClick={() => handleSort("created_at")}
                       className="flex items-center space-x-1 hover:text-gray-700"
                     >
                       <Tag size={16} />
                       <span>تاريخ الطلب</span>
                       <ArrowUpDown size={16} />
                     </button>
-                  </th> */}
+                  </th>
                   <th
                     scope="col"
                     className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"

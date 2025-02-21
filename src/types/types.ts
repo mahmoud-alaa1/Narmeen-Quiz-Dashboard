@@ -9,41 +9,9 @@ export interface Order {
   };
   quantity: number;
   packageId: string;
+  created_at: string;
   status: "pending" | "shipped" | "compeleted";
 }
-
-/*
-address
-: 
-"abdallah 211"
-created_at
-: 
-"2025-02-19T22:39:47.000000Z"
-email
-: 
-"a.yasser9999@gmail.com"
-id
-: 
-2
-name
-: 
-"Abdallah"
-note
-: 
-"test"
-packageId
-: 
-2
-phone
-: 
-"20202002"
-status
-: 
-"pending"
-updated_at
-: 
-"2025-02-19T22:39:47.000000Z"
-*/
 
 export interface OrderResponse {
   address: string;
@@ -55,7 +23,12 @@ export interface OrderResponse {
   packageId: number;
   name: string;
   quantity: number;
+  created_at: string;
 }
 
-export type TSortField = keyof Order["client"] | "packageId" | "status";
+export type TSortField =
+  | keyof Order["client"]
+  | "packageId"
+  | "status"
+  | "created_at";
 export type TSortDirection = "asc" | "desc";
