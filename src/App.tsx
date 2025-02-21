@@ -106,6 +106,19 @@ function App() {
                     className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                   >
                     <button
+                      onClick={() => handleSort("packageId")}
+                      className="flex items-center space-x-1 hover:text-gray-700"
+                    >
+                      <Package size={16} />
+                      <span>الكمية</span>
+                      <ArrowUpDown size={16} />
+                    </button>
+                  </th>
+                  <th
+                    scope="col"
+                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                  >
+                    <button
                       onClick={() => handleSort("status")}
                       className="flex items-center space-x-1 hover:text-gray-700"
                     >

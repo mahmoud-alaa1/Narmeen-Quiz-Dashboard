@@ -119,7 +119,10 @@ export default function TableBody({ field, newDirection }: TableBodyProps) {
             {order.client.notes}
           </td>
           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-            {order.packageId}
+            {order.packageId}P
+          </td>
+          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+            {order.quantity}
           </td>
           <td className="px-6 py-4 whitespace-nowrap">
             <span
