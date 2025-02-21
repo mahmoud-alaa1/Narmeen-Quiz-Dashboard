@@ -84,6 +84,7 @@ export default function TableBody({ field, newDirection }: TableBodyProps) {
               email: order.email,
               notes: order.note,
             },
+            quantity: order.quantity,
           };
           return newOrder;
         });

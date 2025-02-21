@@ -7,6 +7,7 @@ export interface Order {
     email: string;
     notes: string;
   };
+  quantity: number;
   packageId: string;
   status: "pending" | "shipped" | "compeleted";
 }
