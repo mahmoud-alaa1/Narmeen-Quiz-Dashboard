@@ -53,7 +53,8 @@ export interface OrderResponse {
   note: string;
   packageId: number;
   name: string;
+  quantity: number;
 }
 
-export type TSortField = keyof Order["client"] | "packageId" | "status" ;
-export type TSortDirection = "asc" | "desc" ;
+export type TSortField = keyof Order["client"] | "packageId" | "status";
+export type TSortDirection = "asc" | "desc";

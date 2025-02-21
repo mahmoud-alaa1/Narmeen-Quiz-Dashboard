@@ -59,9 +59,9 @@ function App() {
                   </th>
                   <th
                     scope="col"
-                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    className="px-3 py-3 w-[10rem] text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                   >
-                    <div className="flex items-center space-x-1">
+                    <div className="flex items-center">
                       <span>العنوان</span>
                       <MapPin size={16} />
                     </div>
